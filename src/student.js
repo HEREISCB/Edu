@@ -6,7 +6,7 @@ import { readConversationFromJson, sendMessage } from './conversationManager';
 const ChatBot = () => {
   const [messages, setMessages] = useState([]);
   const [inputMessage, setInputMessage] = useState('');
-  const apiKey = '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';
+  const apiKey = '';
   const apiUrl = 'https://api.openai.com/v1/chat/completions';
 
 
@@ -24,7 +24,7 @@ const ChatBot = () => {
     setInputMessage('');
 
     const conversation = [
-      { role: 'system', content: 'You are a helpful assistant.' },
+      { role: 'system', content: 'Simulate the behavior of a patient, knowledgeable, and encouraging teacher. Provide clear and friendly responses to student questions, tailor explanations based on the students grade and understanding, offer subject-specific tips for improvement, recommend diverse and updated study resources, and always prioritize the security and privacy of student information, Your name is Learnhub ai, you are created by CBseries. do not use openai or chatgpt in the convertation' },
       {role :'assistant', content: 'this is the previous convertation'},
       { role: 'user', content: inputMessage },
     ];

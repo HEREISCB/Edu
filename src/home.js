@@ -2,16 +2,19 @@ import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { customstyles } from '../style'
 import Bottab from './bottab'
-import { NavigationContainer } from '@react-navigation/native'
-import Register from './register'
+import { useRoute } from '@react-navigation/native'
 
-const Home = () => {
 
+
+const Home = ( navigation) => {
+  const route = useRoute()
+  const isFaculty = route.params?.isFaculty
+  
   
     return (
       <>
-      
-
+      <Text>
+         </Text>
         <Bottab />
       </>
   )

@@ -10,7 +10,7 @@ export const customstyles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         textAlign: 'center',
-        marginTop: -40
+        marginTop: -80
       },
     textbox: {
         borderColor: 'black' , 

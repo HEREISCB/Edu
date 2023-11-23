@@ -1,30 +1,45 @@
-import { Button, StyleSheet, Text, TextInput, View, Alert, Modal, Pressable, Image } from 'react-native'
+import { Button, StyleSheet, Text, TextInput, View, Alert, Modal, Pressable, Image, } from 'react-native'
+import { useRoute } from '@react-navigation/native';
 import React from 'react'
 import { useState } from 'react';
 import { customstyles } from '../style'
-import { NavigationContainer } from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack'
-import { SafeAreaView } from 'react-native-safe-area-context';
+import BouncyCheckbox from "react-native-bouncy-checkbox";
+import codegenNativeCommands from 'react-native/Libraries/Utilities/codegenNativeCommands';
 
-url = 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.ldsliving.com%2Fwhat-the-church-has-said-about-suicide-comforting-answers-from-church-leaders%2Fs%2F88292&psig=AOvVaw0SxOuHKqxZH9SS68pNJaCc&ust=1693703405961000&source=images&cd=vfe&opi=89978449&ved=0CBAQjRxqFwoTCPiCsIHfioEDFQAAAAAdAAAAABAK'
+
+
 
 const Flogin = ({navigation}) => {
   const [user, useris] = useState('');
   const [pass, passis] = useState('');
   // const [ModalVisible, setModalVisible] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
-
+  const [checkbox, setcheckbox] = useState(false)
+  function iffacylty(){
+    if (checkbox==true){
+     
+      return(
+        <Text>Yes faculty</Text>)
+    }
+    }
   
   return (
     <>
     <View style={customstyles.container}> 
-      <Image style={{width: 400, height: 250, marginTop: -200, marginBottom: 20}} source={{uri: 'https://cdn.ldsliving.com/dims4/default/33b6400/2147483647/strip/true/crop/509x339+0+0/resize/509x339!/format/jpg/quality/90/?url=http%3A%2F%2Flds-living-brightspot.s3.amazonaws.com%2F27%2F0a%2Fcfb5d6e0aee070d6b29d5a67a2ca%2F44372.jpg'}} />
+    
+      <Image style={{width: 400, height: 250, marginTop: -70, marginBottom: 20}} source={{uri: 'https://sgipolytechnic.in/static/media/Dblock.03234074.jpg'}} />
       <Text style={{fontSize: 18, fontFamily: 'monospace', margin: 5, textAlign: 'center' }}>Login </Text>
       <Text style={{fontSize: 12, fontFamily: 'monospace', marginBottom:10, width: 200, textAlign: 'center' }}>Using ID The and Password Provided By Your Faculty</Text>
      
       <TextInput style={customstyles.textbox} onChangeText={useris} value={user} placeholder='Username' />
       <TextInput style={customstyles.textbox} onChangeText={passis} value={pass} placeholder='Password' secureTextEntry = {true} />
-      <View style= {{padding: 5}}>
+      <BouncyCheckbox text='Faculty?' textStyle={{
+  textDecorationLine: "none",
+}}
+ onPress={() => setcheckbox(!checkbox)}/> 
+ {iffacylty()}
+
+      <View style= {{padding: 5, paddingBottom: 10}}>
 
 
        
@@ -32,6 +47,12 @@ const Flogin = ({navigation}) => {
       
       <Pressable style={customstyles.cusbut} onPress={()=> {pascheck()}}>
         <Text style={{textAlign:'center', color: 'white', fontSize: 15}}>LOGIN</Text>
+      </Pressable>
+      <View style={{marginBottom: 25}}>
+
+      </View>
+      <Pressable style={customstyles.cusbut} onPress={()=> {pascheck()}}>
+        <Text style={{textAlign:'center', color: 'white', fontSize: 15,}}>Register</Text>
       </Pressable>
       <Modal
         animationType="fade"
@@ -59,15 +80,16 @@ const Flogin = ({navigation}) => {
 
     </View>
       </Modal>
-    </View>
-    <Text style={{fontSize: 12, fontFamily: 'monospace', marginBottom:10, width: 390,marginTop: 5, textAlign: 'center' }}>Seeing you on our app makes me sad, I know The sucidal thoughts you get after choosing engineering. contact +919820466726 in case you still have hopes</Text>
+      </View>
+    
+    <Text style={{fontSize: 12, fontFamily: 'monospace', marginBottom:10, width: 390,marginTop: 5, textAlign: 'center' }}>Welcome to Learnhub! Elevate your study game with AI-powered learning. 🚀 Your path to success begins here!</Text>
 
     </>
   )
-  
+
 function pascheck(){
   if(user == "Cb" || 'CB' && pass == "123"){
-    navigation.navigate("Home")
+    navigation.navigate("Home", {checkboxis: checkbox})
   }
   else{
     setModalVisible(true)
